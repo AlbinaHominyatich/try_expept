@@ -2,6 +2,9 @@
 class InvalidFileFormatError (Exception):
     def __init__(self, f):
         self.f = f
+#FilleNotFoundError
+#UnsupportedFormatError - коли немає розширення .txt
+
 def read_file(f):
     try:
         with open(f, "r") as file:
