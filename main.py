@@ -1,26 +1,21 @@
+#1
+class InvalidUsernameError(Exception):
+    def __init__(self, username):
+        self.username = username
+
+#InvalidLengthError
+#InvalidCharacterError
+#DublicateUsrnameErro
+
+def register_user(username):
+    if len(username) < 5:
+        raise InvalidUsernameError(username)
+    else:
+        print("Вас зареєстровано!")
+#приклад використання
 try:
-    print("start code")
-    print(error)
-    print("end")
-except:
-    print("no problems")
-print("any code..")
-
-def checker(var):
-    if type(var) != str:
-        raise TypeError(f'Ми не працюємо з {type(var)}, нам треба str')
-    else:
-        return var
-a = '1234'
-checker(a)
-
-class BuildingHouseError(Exception):
-    def __str__(self):
-        return "щось не те, дуже багато і дорого"
-
-def check_material_build(amount, limit):
-    if amount > limit:
-        return "Достатньо матеріалів!"
-    else:
-        raise BuildingHouseError()
-check_material_build(10, 300)
+    username = input("ВВедіть ім'я користувача")
+    register_user(username)
+except InvalidUsernameError as e:
+    print(f"Неправильне ім'я користувача {e.username} "
+          f'мінімум 5 символів')
