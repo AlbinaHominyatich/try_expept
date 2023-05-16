@@ -1,26 +1,17 @@
+#3
+class InvalidFileFormatError (Exception):
+    def __init__(self, f):
+        self.f = f
+def read_file(f):
+    try:
+        with open(f, "r") as file:
+            content = file.read()
+            print("Вміст файлу:", content)
+    except IOError:
+        raise InvalidFileFormatError(f)
+
 try:
-    print("start code")
-    print(error)
-    print("end")
-except:
-    print("no problems")
-print("any code..")
-
-def checker(var):
-    if type(var) != str:
-        raise TypeError(f'Ми не працюємо з {type(var)}, нам треба str')
-    else:
-        return var
-a = '1234'
-checker(a)
-
-class BuildingHouseError(Exception):
-    def __str__(self):
-        return "щось не те, дуже багато і дорого"
-
-def check_material_build(amount, limit):
-    if amount > limit:
-        return "Достатньо матеріалів!"
-    else:
-        raise BuildingHouseError()
-check_material_build(10, 300)
+    read_file(input("Введіть назву файлу: "))
+except InvalidFileFormatError as e:
+    print(f'Невірний формат файлу {e.f}'
+          f'підтримуються тільки текстові файли')
