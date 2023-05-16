@@ -23,4 +23,4 @@ def check_material_build(amount, limit):
         return "Достатньо матеріалів!"
     else:
         raise BuildingHouseError()
-print(check_material_build(10, 300))
+check_material_build(10, 300)
